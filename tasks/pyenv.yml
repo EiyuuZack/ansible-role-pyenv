@@ -1,0 +1,28 @@
+---
+- name: Ensure pyenv is installed
+  homebrew:
+    name: pyenv
+    state: present
+
+- name: Ensure pyenv-default-packages is installed
+  homebrew:
+    name: jawshooah/pyenv/pyenv-default-packages
+    state: present
+
+- name: 'Ensure {{ pyenv_root }} directory is created'
+  file:
+    path: '{{ pyenv_root }}'
+    state: directory
+    mode: 0755
+
+- name: Ensure pyenv is added to profile system-wide
+  blockinfile:
+    path: /etc/profile
+    block: "{{ lookup('template', 'pyenv.sh.j2') }}"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK -- PYENV"
+  become: yes
+
+- name: Ensure default-packages file is copied
+  copy:
+    src: default-packages
+    dest: '{{ pyenv_root }}/default-packages'

@@ -1,0 +1,12 @@
+---
+- name: Ensure selected python versions are installed
+  shell: $SHELL -lc 'pyenv install {{ item.version|quote }}' # when using shell always use quote filter to avoid injection
+  args:
+    creates: '{{ pyenv_root }}/versions/{{ item.version }}/bin/python{{ item.version }}'
+  with_items: '{{ pyenv_pythons }}'
+
+- name: 'Ensure python {{ pyenv_default_python }} is default'
+  shell: $SHELL -lc 'pyenv global {{ pyenv_default_python|quote }}'
+
+- name: Ensure shims are updated
+  shell: $SHELL -lc 'pyenv rehash'
