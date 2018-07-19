@@ -2,7 +2,7 @@
 - name: Ensure selected python versions are installed
   shell: $SHELL -lc 'pyenv install {{ item.version|quote }}' # when using shell always use quote filter to avoid injection
   args:
-    creates: '{{ pyenv_root }}/versions/{{ item.version }}/bin/python{{ item.version }}'
+    creates: '{{ pyenv_root }}/versions/{{ item.version }}/bin/python'
   with_items: '{{ pyenv_pythons }}'
 
 - name: 'Ensure python {{ pyenv_default_python }} is default'
