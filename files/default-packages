@@ -1,3 +1,4 @@
 ansible
+paramiko
 awscli
 aws-sam-cli
