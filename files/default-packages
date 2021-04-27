@@ -1,5 +1,6 @@
 ansible
-paramiko
 awscli
 aws-sam-cli
 docker
+paramiko
+pip
