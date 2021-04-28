@@ -8,7 +8,6 @@
   homebrew:
     name: jawshooah/pyenv/pyenv-default-packages
     state: head
-    install_options: without-pyenv-virtualenv
 
 - name: 'Ensure {{ pyenv_root }} directory is created'
   file:
