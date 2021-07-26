@@ -10,11 +10,3 @@
 
 - name: Ensure shims are updated
   shell: $SHELL -lc 'pyenv rehash'
-
-# Must be done because the latest python version (currently 3.9.4)
-# comes with pip 20, which does not use the new dependency resolver
-- name: Ensure pip is upgraded to latest version
-  shell: $SHELL -lc 'pip install --upgrade pip'
-
-- name: Ensure ansible-related packages are installed
-  shell: $SHELL -lc 'pip install ansible paramiko'
