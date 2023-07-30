@@ -15,12 +15,11 @@
     state: directory
     mode: 0755
 
-- name: Ensure pyenv is added to profile system-wide
+- name: Ensure pyenv is added to user's profile
   blockinfile:
-    path: /etc/zprofile
+    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.zprofile"
     block: "{{ lookup('template', 'pyenv.sh.j2') }}"
     marker: "# {mark} ANSIBLE MANAGED BLOCK -- PYENV"
-  become: yes
 
 - name: Ensure default-packages file is copied
   copy:
