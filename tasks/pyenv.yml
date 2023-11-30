@@ -20,6 +20,7 @@
     path: "{{ ansible_env.HOME }}/.zprofile"
     block: "{{ lookup('template', 'pyenv.sh.j2') }}"
     marker: "# {mark} ANSIBLE MANAGED BLOCK -- PYENV"
+    create: true
 
 - name: Ensure default-packages file is copied
   copy:
