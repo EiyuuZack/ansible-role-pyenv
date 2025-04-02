@@ -1,5 +1,5 @@
 ---
 pyenv_root: ~/.pyenv
-pyenv_default_python: 3.11.4
+pyenv_default_python: 3.13.2
 pyenv_pythons:
-  - version: 3.11.4
+  - version: 3.13.2
